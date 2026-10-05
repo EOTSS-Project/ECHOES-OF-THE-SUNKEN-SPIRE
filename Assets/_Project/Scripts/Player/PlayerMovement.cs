@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 6f;
-    public float turnSpeed = 150f;
+    [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private float turnSpeed = 150f;
 
     void Update()
     {
