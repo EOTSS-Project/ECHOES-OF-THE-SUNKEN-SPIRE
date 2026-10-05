@@ -1274,6 +1274,7 @@ GameObject:
   - component: {fileID: 905684343}
   - component: {fileID: 905684342}
   - component: {fileID: 905684341}
+  - component: {fileID: 905684344}
   m_Layer: 0
   m_Name: Hazard_Spike_2
   m_TagString: Untagged
@@ -1374,6 +1375,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905684339}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &905684344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905684339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fe76e25997e9043856939bafa6a44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardPulse
+  pulseSpeed: 4
+  scaleAmount: 0.2
 --- !u!1 &910639186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,6 +2102,7 @@ GameObject:
   - component: {fileID: 1286180216}
   - component: {fileID: 1286180215}
   - component: {fileID: 1286180214}
+  - component: {fileID: 1286180217}
   m_Layer: 0
   m_Name: Hazard_Spike_1
   m_TagString: Untagged
@@ -2187,6 +2203,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286180212}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1286180217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286180212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fe76e25997e9043856939bafa6a44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardPulse
+  pulseSpeed: 4
+  scaleAmount: 0.2
 --- !u!1 &1295885723
 GameObject:
   m_ObjectHideFlags: 0
