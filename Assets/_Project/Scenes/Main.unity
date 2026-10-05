@@ -537,7 +537,7 @@ Transform:
   m_GameObject: {fileID: 376847994}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 4.5, z: 3}
+  m_LocalPosition: {x: -10, y: 8, z: 3}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -998,7 +998,7 @@ Transform:
   m_GameObject: {fileID: 717765453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.07143, y: 0.75, z: 1.07143}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1143,7 +1143,7 @@ Transform:
   m_GameObject: {fileID: 814981806}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1653,8 +1653,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160404040}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3483693, y: 0.3395184, z: 0.66726685, w: 0.5640222}
-  m_LocalPosition: {x: 7.0532384, y: 9.254471, z: -0.59008336}
+  m_LocalRotation: {x: -0.08717222, y: 0.89959055, z: -0.21045256, w: -0.37262264}
+  m_LocalPosition: {x: 31.239925, y: 34.376854, z: 35.02118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1733,7 +1733,7 @@ Transform:
   m_GameObject: {fileID: 1166074554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7, z: 0}
+  m_LocalPosition: {x: 4, y: 15, z: 10}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2229,6 +2229,7 @@ GameObject:
   - component: {fileID: 1295885727}
   - component: {fileID: 1295885726}
   - component: {fileID: 1295885725}
+  - component: {fileID: 1295885728}
   m_Layer: 0
   m_Name: ExitDoor_Zone
   m_TagString: Untagged
@@ -2245,7 +2246,7 @@ Transform:
   m_GameObject: {fileID: 1295885723}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11, z: 12}
+  m_LocalPosition: {x: 14, y: 17, z: 10}
   m_LocalScale: {x: 6, y: 1, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2329,6 +2330,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295885723}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1295885728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295885723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8d0c7414ed68e4991919a6758e5829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalZoneEffects
+  rotationSpeed: 25
+  pulseSpeed: 2.5
+  pulseAmount: 0.15
 --- !u!1 &1312862685
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,7 +2777,7 @@ Transform:
   m_GameObject: {fileID: 2006451416}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9285698, y: 3.5, z: 12.5}
+  m_LocalPosition: {x: -3.92857, y: 3.5, z: 12.5}
   m_LocalScale: {x: 3, y: 0.5, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2921,7 +2937,7 @@ Transform:
   m_GameObject: {fileID: 2098159813}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 9, z: 4}
+  m_LocalPosition: {x: 8, y: 13, z: 4}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
