@@ -3,11 +3,11 @@ using UnityEngine;
 public class CollectibleItem : MonoBehaviour
 {
     [Header("Rotation Settings")]
-    public float rotateSpeed = 90f;
+    [SerializeField] private float rotateSpeed = 90f;
 
     [Header("Floating Settings")]
-    public float floatSpeed = 2f;
-    public float floatAmount = 0.25f;
+    [SerializeField] private float floatSpeed = 2f;
+    [SerializeField] private float floatAmount = 0.25f;
 
     private Vector3 startPos;
 
@@ -18,10 +18,10 @@ public class CollectibleItem : MonoBehaviour
 
     void Update()
     {
-        // Kendi etrafında dönme
+        // Y ekseninde sürekli dönme hareketi
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World);
 
-        // Sinüs dalgası ile süzülme
+        // Sinüs dalgası ile yukarı-aşağı süzülme
         float newY = startPos.y + (Mathf.Sin(Time.time * floatSpeed) * floatAmount);
         transform.position = new Vector3(startPos.x, newY, startPos.z);
     }
