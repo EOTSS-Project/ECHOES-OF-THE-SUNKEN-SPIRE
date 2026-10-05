@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 376847998}
   - component: {fileID: 376847997}
   - component: {fileID: 376847996}
+  - component: {fileID: 376847999}
   m_Layer: 0
   m_Name: Crystal_01
   m_TagString: Untagged
@@ -620,6 +621,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376847994}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &376847999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376847994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f460ec62580a54c851078e5405aca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
+  rotateSpeed: 90
+  floatSpeed: 2
+  floatAmount: 0.25
 --- !u!1 &568326340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,13 +1622,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160404040}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.08717232, y: 0.8995905, z: -0.2104525, w: -0.37262273}
-  m_LocalPosition: {x: 7.0532384, y: 9.254471, z: -0.59008294}
+  m_LocalRotation: {x: -0.3483693, y: 0.3395184, z: 0.66726685, w: 0.5640222}
+  m_LocalPosition: {x: 7.0532384, y: 9.254471, z: -0.59008336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -57.787, y: -8.84, z: -255.528}
 --- !u!114 &1160404044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,6 +1685,7 @@ GameObject:
   - component: {fileID: 1166074558}
   - component: {fileID: 1166074557}
   - component: {fileID: 1166074556}
+  - component: {fileID: 1166074559}
   m_Layer: 0
   m_Name: Crystal_03
   m_TagString: Untagged
@@ -1769,6 +1786,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166074554}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1166074559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166074554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f460ec62580a54c851078e5405aca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
+  rotateSpeed: 90
+  floatSpeed: 2
+  floatAmount: 0.25
 --- !u!1 &1232228342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,6 +2731,7 @@ GameObject:
   - component: {fileID: 2098159817}
   - component: {fileID: 2098159816}
   - component: {fileID: 2098159815}
+  - component: {fileID: 2098159818}
   m_Layer: 0
   m_Name: Crystal_02
   m_TagString: Untagged
@@ -2799,6 +2832,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098159813}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2098159818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098159813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f460ec62580a54c851078e5405aca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
+  rotateSpeed: 90
+  floatSpeed: 2
+  floatAmount: 0.25
 --- !u!1 &2106915741
 GameObject:
   m_ObjectHideFlags: 0
