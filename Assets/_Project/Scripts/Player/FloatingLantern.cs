@@ -3,11 +3,11 @@ using UnityEngine;
 public class FloatingLantern : MonoBehaviour
 {
     [Header("Hover Settings")]
-    public float hoverSpeed = 3f;
-    public float hoverHeight = 0.15f;
+    [SerializeField] private float hoverSpeed = 3f;
+    [SerializeField] private float hoverHeight = 0.15f;
 
     [Header("Rotation Settings")]
-    public float spinSpeed = 30f;
+    [SerializeField] private float spinSpeed = 30f;
 
     private Vector3 localStartPos;
 
