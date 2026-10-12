@@ -18,7 +18,7 @@ public class GoalZoneEffects : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.Self);
 
         float scaleOffset = Mathf.Sin(Time.time * pulseSpeed) * pulseAmount;
         transform.localScale = initialScale + new Vector3(scaleOffset, scaleOffset, scaleOffset);
