@@ -456,7 +456,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal_03
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1178621329322657131, guid: f902e4221163d844dac662457987b12f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2760,7 +2761,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal_02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1178621329322657131, guid: f902e4221163d844dac662457987b12f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2889,7 +2891,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal_01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9194344335813356632, guid: f902e4221163d844dac662457987b12f, type: 3}
+      propertyPath: m_TagString
+      value: Crystal
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1178621329322657131, guid: f902e4221163d844dac662457987b12f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
