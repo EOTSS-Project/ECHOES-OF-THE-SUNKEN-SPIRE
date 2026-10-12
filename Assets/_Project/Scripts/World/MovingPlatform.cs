@@ -1,23 +1,32 @@
+
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
     [Header("Platform Elevator Settings")]
-    [SerializeField] private float moveDistance = 5f; // metres travelled upward from the start position
-    [SerializeField] private float speed = 2f;        // ride frequency: one full up-and-down takes 2*PI/speed seconds
+    [SerializeField] private float moveDistance = 5f;
+    [SerializeField] private float speed = 2f;
 
     private Vector3 startPos;
+    private float startTime;
 
     void Start()
     {
-        startPos = transform.position; // the lowest point of the ride
+        startPos = transform.position;
+        startTime = Time.time;
     }
 
     void Update()
     {
-        // 0 at the start, 1 at the top: the platform never sinks below where it began
-        float t = (1f - Mathf.Cos(Time.time * speed)) * 0.5f;
+        // Normalize sine value to keep the platform between 0 and 1
+        float elapsedTime = Time.time - startTime;
+
+        float t = (Mathf.Sin(elapsedTime * speed - Mathf.PI / 2f) + 1f) / 2f;
+
+        // Move upward from the starting position without going below it
         float newY = startPos.y + t * moveDistance;
+
         transform.position = new Vector3(startPos.x, newY, startPos.z);
     }
 }
+
