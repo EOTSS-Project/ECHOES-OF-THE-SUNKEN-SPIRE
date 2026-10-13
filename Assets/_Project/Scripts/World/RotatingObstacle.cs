@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class RotatingObstacle : MonoBehaviour
@@ -8,6 +9,7 @@ public class RotatingObstacle : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(rotationAxis * spinSpeed * Time.deltaTime);
+        transform.Rotate(rotationAxis * spinSpeed * Time.deltaTime, Space.Self);
     }
 }
+

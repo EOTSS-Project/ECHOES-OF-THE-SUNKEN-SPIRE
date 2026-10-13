@@ -1289,6 +1289,7 @@ GameObject:
   - component: {fileID: 905684341}
   - component: {fileID: 905684344}
   - component: {fileID: 905684345}
+  - component: {fileID: 905684346}
   m_Layer: 0
   m_Name: Hazard_Spike_2
   m_TagString: Untagged
@@ -1415,6 +1416,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a31f40b442da5e4d9e0593e1d3a1273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
+--- !u!114 &905684346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905684339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423309f945e42bd4abaa019f95300dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotatingObstacle
+  spinSpeed: 60
+  rotationAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &910639186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,8 +3001,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4660029845810448099, guid: c40ab18591ed09d40814edae12e85cc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7388282884104180264}
   m_SourcePrefab: {fileID: 100100000, guid: c40ab18591ed09d40814edae12e85cc1, type: 3}
+--- !u!1 &7388282884104180263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4660029845810448099, guid: c40ab18591ed09d40814edae12e85cc1, type: 3}
+  m_PrefabInstance: {fileID: 7388282884104180262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7388282884104180264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388282884104180263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423309f945e42bd4abaa019f95300dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotatingObstacle
+  spinSpeed: 60
+  rotationAxis: {x: 0, y: 1, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
