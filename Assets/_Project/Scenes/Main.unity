@@ -741,6 +741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609199578}
   - component: {fileID: 609199577}
+  - component: {fileID: 609199579}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -828,6 +829,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &609199579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609199576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &655866894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,8 +1680,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160404040}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.08717222, y: 0.89959055, z: -0.21045256, w: -0.37262264}
-  m_LocalPosition: {x: 31.239925, y: 34.376854, z: 35.02118}
+  m_LocalRotation: {x: 0.7071069, y: 0.000000029802322, z: -0.000000014901161, w: 0.7071067}
+  m_LocalPosition: {x: -0.32380807, y: 34.338993, z: -5.9288416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1714,7 +1744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleCameraFollow
   target: {fileID: 235727113}
-  offset: {x: 0, y: 5, z: -8}
+  offset: {x: 0, y: 30, z: -1}
   smoothSpeed: 5
 --- !u!1 &1232228342
 GameObject:
