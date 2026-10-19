@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 235727117}
   - component: {fileID: 235727116}
   - component: {fileID: 235727115}
+  - component: {fileID: 235727119}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -423,6 +424,18 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &235727119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235727109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8681cf1ad5462485fb7d4f5f8f1ead2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDrop
 --- !u!1001 &317515825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1194,6 +1207,7 @@ GameObject:
   - component: {fileID: 844379445}
   - component: {fileID: 844379444}
   - component: {fileID: 844379443}
+  - component: {fileID: 844379446}
   m_Layer: 3
   m_Name: Ramp_Safe_1
   m_TagString: Untagged
@@ -1294,6 +1308,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844379441}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &844379446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844379441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6731219bb3c5432099ff6b58044c652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slippery
+  grip: 0.04
 --- !u!1 &905684339
 GameObject:
   m_ObjectHideFlags: 0
