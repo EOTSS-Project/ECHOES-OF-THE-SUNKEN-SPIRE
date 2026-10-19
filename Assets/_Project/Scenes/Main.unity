@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 568326344}
   - component: {fileID: 568326343}
   - component: {fileID: 568326342}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RisingWater_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
