@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -9,24 +10,30 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 startPos;
     private float startTime;
+    private Rigidbody rb;
 
     void Start()
     {
-        startPos = transform.position;
+        rb = GetComponent<Rigidbody>();
+        startPos = rb.position;
         startTime = Time.time;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // Normalize sine value to keep the platform between 0 and 1
-        float elapsedTime = Time.time - startTime;
+        float elapsedTime = Time.fixedTime - startTime;
 
         float t = (Mathf.Sin(elapsedTime * speed - Mathf.PI / 2f) + 1f) / 2f;
 
-        // Move upward from the starting position without going below it
         float newY = startPos.y + t * moveDistance;
 
-        transform.position = new Vector3(startPos.x, newY, startPos.z);
+        Vector3 targetPos = new Vector3(
+            startPos.x,
+            newY,
+            startPos.z
+        );
+
+        rb.MovePosition(targetPos);
     }
 }
 
