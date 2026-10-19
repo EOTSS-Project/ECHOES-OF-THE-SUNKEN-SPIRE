@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 235727113}
   - component: {fileID: 235727112}
   - component: {fileID: 235727111}
+  - component: {fileID: 235727118}
   - component: {fileID: 235727110}
   - component: {fileID: 235727117}
   - component: {fileID: 235727116}
@@ -403,6 +404,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9ca42ab4795424bb1a965e517bba77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
+  maxSpeed: 5
+  acceleration: 40
+  turnSpeed: 720
+--- !u!114 &235727118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235727109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e533fe55e68e5944a66f7d8f26de5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
+  jumpForce: 4
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &317515825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1030,7 +1050,7 @@ GameObject:
   - component: {fileID: 747734868}
   - component: {fileID: 747734867}
   - component: {fileID: 747734866}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform_Safe_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1174,7 +1194,7 @@ GameObject:
   - component: {fileID: 844379445}
   - component: {fileID: 844379444}
   - component: {fileID: 844379443}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp_Safe_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2378,7 +2398,7 @@ GameObject:
   - component: {fileID: 1642746541}
   - component: {fileID: 1642746540}
   - component: {fileID: 1642746539}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BaseFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2702,7 +2722,7 @@ GameObject:
   - component: {fileID: 2006451419}
   - component: {fileID: 2006451418}
   - component: {fileID: 2006451422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Elevator_Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
