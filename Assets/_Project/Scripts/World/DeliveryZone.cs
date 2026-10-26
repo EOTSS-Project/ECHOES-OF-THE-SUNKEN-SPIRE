@@ -8,15 +8,17 @@ public class DeliveryZone : MonoBehaviour
         PlayerCarry carry = other.GetComponent<PlayerCarry>();
 
         if (carry == null) return;
-        if (!carry.IsCarrying()) return;
 
+        // The exit is the last sanctuary: a carried crystal counts, and reaching it ends the climb
         Crystal crystal = carry.HandOver();
+        if (crystal != null)
+        {
+            Destroy(crystal.gameObject);
+            Debug.Log("Delivered!");
+            GameEvents.RaiseCrystalDeposited();
+        }
 
-        if (crystal == null) return;
-
-        Destroy(crystal.gameObject);
-
-        Debug.Log("Delivered!");
+        GameEvents.RaiseWon();
     }
 }
 

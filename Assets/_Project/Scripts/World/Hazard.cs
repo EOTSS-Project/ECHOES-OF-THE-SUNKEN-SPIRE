@@ -8,5 +8,9 @@ public class Hazard : MonoBehaviour
         {
             Debug.Log("Hazard touched! Dropping cargo/crystal.");
         }
+
+        // Red burns: the player goes back to the last checkpoint
+        PlayerRespawn respawn = other.GetComponentInParent<PlayerRespawn>();
+        if (respawn != null) respawn.Die("burned");
     }
 }
