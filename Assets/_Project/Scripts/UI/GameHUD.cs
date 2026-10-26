@@ -29,6 +29,9 @@ public class GameHUD : MonoBehaviour
         GameEvents.PlayerDied += OnDied;
         GameEvents.CheckpointReached += OnCheckpoint;
         GameEvents.CrystalDeposited += OnDeposited;
+        GameEvents.CrystalLost += OnLost;
+        GameEvents.Hint += OnHint;
+        GameEvents.FinalRush += OnFinalRush;
         GameEvents.Won += OnWon;
     }
 
@@ -37,8 +40,15 @@ public class GameHUD : MonoBehaviour
         GameEvents.PlayerDied -= OnDied;
         GameEvents.CheckpointReached -= OnCheckpoint;
         GameEvents.CrystalDeposited -= OnDeposited;
+        GameEvents.CrystalLost -= OnLost;
+        GameEvents.Hint -= OnHint;
+        GameEvents.FinalRush -= OnFinalRush;
         GameEvents.Won -= OnWon;
     }
+
+    void OnHint(string text) => Show(text, 5f);
+    void OnFinalRush() => Show("Kule sarsılıyor! Sular kabarıyor... Zirveye koş!", 4f);
+    void OnLost() => Show("Bir ışık sulara gömüldü... Kule onu bir daha geri vermeyecek.", 3f);
 
     void Update()
     {
@@ -65,14 +75,16 @@ public class GameHUD : MonoBehaviour
 
     void OnWon()
     {
-        won = true;
+        if (won) return;
         if (saved >= total) Show("Bütün ışıkları kurtardın! Batık Kule yeniden parlıyor. (" + saved + "/" + total + ")", 999f);
         else if (saved > 0) Show("Zirveye ulaştın. Kurtardığın " + saved + " ışık kulenin yankısında yaşayacak. (" + saved + "/" + total + ")", 999f);
         else Show("Zirveye ulaştın... ama kule karanlıkta kaldı. (0/" + total + ")", 999f);
+        won = true; // the ending stays on screen
     }
 
     void Show(string text, float seconds)
     {
+        if (won) return;
         message = text;
         messageUntil = Time.time + seconds;
     }
@@ -88,8 +100,11 @@ public class GameHUD : MonoBehaviour
         if (player != null && water != null && !won)
         {
             float gap = Mathf.Max(0f, player.FeetY - water.TopY);
-            Line(new Rect(20, 15, 700, 32), gap < 3f ? "Sular ayağının dibinde: " + gap.ToString("0.0") + " m!" : "Sular: " + gap.ToString("0.0") + " m aşağıda",
-                 gap < 3f ? new Color(1f, 0.4f, 0.35f) : new Color(0.6f, 0.85f, 1f), infoStyle);
+            if (!water.IsRising)
+                Line(new Rect(20, 15, 700, 32), "Sular henüz uyuyor... (" + gap.ToString("0.0") + " m aşağıda)", new Color(0.6f, 0.85f, 1f), infoStyle);
+            else
+                Line(new Rect(20, 15, 700, 32), gap < 3f ? "Sular ayağının dibinde: " + gap.ToString("0.0") + " m!" : "Sular: " + gap.ToString("0.0") + " m aşağıda",
+                     gap < 3f ? new Color(1f, 0.4f, 0.35f) : new Color(0.6f, 0.85f, 1f), infoStyle);
             Line(new Rect(20, 45, 700, 32), "Yükseklik: " + Mathf.Max(0f, player.FeetY).ToString("0") + " m", Color.white, infoStyle);
             Line(new Rect(20, 75, 700, 32), "Işık Kristalleri: " + saved + " / " + total, new Color(1f, 0.9f, 0.3f), infoStyle);
             if (carry != null && carry.IsCarrying())

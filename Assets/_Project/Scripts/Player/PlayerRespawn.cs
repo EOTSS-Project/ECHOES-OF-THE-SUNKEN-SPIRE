@@ -13,6 +13,7 @@ public class PlayerRespawn : MonoBehaviour
 
     public Vector3 CheckpointFeet => checkpointFeet;
     public float FeetY => transform.position.y - halfHeight;
+    public bool JustRespawned => Time.time < safeUntil;
 
     void Awake()
     {
@@ -49,5 +50,16 @@ public class PlayerRespawn : MonoBehaviour
         GameEvents.RaisePlayerRespawned(checkpointFeet);
     }
 
-    void OnWon() { won = true; }
+    // The climb is over: hold the player where they are, even mid-jump at the summit edge
+    void OnWon()
+    {
+        won = true;
+        foreach (var name in new[] { "PlayerMove", "PlayerJump", "PlayerDrop" })
+        {
+            var b = GetComponent(name) as Behaviour;
+            if (b != null) b.enabled = false;
+        }
+        rb.linearVelocity = Vector3.zero;
+        rb.isKinematic = true;
+    }
 }
