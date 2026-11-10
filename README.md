@@ -108,3 +108,44 @@ Gameplay systems, environmental puzzles, level design, lighting, visual effects,
 ## Team
 
 Developed as a university game development project by the **EOTSS Project Team**.
+
+## Week 6 – Balance and Gameplay Testing
+
+**Implemented by: Tuğçe Naz Eser**
+
+### Cargo Balance Values
+
+| Cargo Type | Points | Weight |
+| --- | --- | --- |
+| CT_Light | 1 | 0 |
+| CT_Heavy | 3 | 1 |
+
+The initial ScriptableObject values were checked in the Unity Inspector and matched the assigned configuration.
+
+### Gameplay Test Results
+
+- The game successfully started in Play Mode.
+- Cargo spawning was observed in the scene.
+- Light cargo was successfully collected and carried by the player.
+- The Console confirmed the light cargo values: 1 point, 0 additional weight, and player mass of 1.
+- The player was able to move between platforms while carrying a crystal.
+- The crystal counter reached 3/5 during gameplay.
+- The level was difficult to navigate, particularly in sections involving platform jumps and rising water.
+
+### Issues Observed
+
+During testing, a large turquoise platform obstructed the camera view and made it difficult to see the player and nearby platforms. The platform named S3_Echo_B was identified as a possible source of obstruction, but the exact cause has not been confirmed.
+
+### Balance Evaluation
+
+The light cargo was successfully tested. The heavy cargo configuration was verified in the Inspector, but its movement and jumping effects were not fully tested.
+
+The current score and weight values were retained because there was insufficient comparative gameplay evidence to justify changing them.
+
+### Recommendations
+
+- Review camera obstruction around the turquoise platforms.
+- Evaluate platform visibility and jumping difficulty.
+- Compare light and heavy cargo movement in a controlled test before adjusting the balance values.
+
+**Test Status:** Partially completed. Further heavy cargo testing is recommended.
