@@ -5,7 +5,11 @@ public class Crystal : MonoBehaviour
     private Rigidbody rb;
     private Collider box;
     private Collider range;
-
+    [SerializeField] private CargoType type;
+    public float Weight()
+    {
+        return type != null ? type.Weight() : 0f;
+    }
     [SerializeField] private int pointValue = 1; // Kristalin puan değeri
     private float canPickUpAt; // Yeniden toplanma gecikmesi için zaman tutucu
 
@@ -28,7 +32,7 @@ public class Crystal : MonoBehaviour
     {
         return pointValue;
     }
-
+    
     // Alındığında çalışacak metod (Kinematik ve çarpışmalar kapanır, oyuncuya bağlanır)
     public void PickUp(Transform carryPoint)
     {
