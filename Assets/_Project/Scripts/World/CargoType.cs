@@ -1,18 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Cube Courier/Cargo Type")]
+[CreateAssetMenu(fileName = "NewCargoType", menuName = "Game/Cargo Type")]
 public class CargoType : ScriptableObject
 {
-    [SerializeField] private int points = 1;
-    [SerializeField] private float weight = 0f;
+    [SerializeField] private string typeName;
+    [SerializeField] private float weight;
+    [SerializeField] private float speedMultiplier = 1f;
+    [SerializeField] private float jumpMultiplier = 1f;
 
-    public int Points()
-    {
-        return points;
-    }
-
-    public float Weight()
-    {
-        return weight;
-    }
+    public string TypeName => typeName;
+    public float Weight() => weight;
+    public float SpeedMultiplier => speedMultiplier;
+    public float JumpMultiplier => jumpMultiplier;
 }

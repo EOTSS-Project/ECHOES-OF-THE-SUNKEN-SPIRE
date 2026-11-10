@@ -9,6 +9,9 @@ public class PlayerCarry : MonoBehaviour
     private Rigidbody rb;
     private float baseMass;
 
+    public float CurrentSpeedMultiplier => (carried != null && carried.Type != null) ? carried.Type.SpeedMultiplier : 1f;
+    public float CurrentJumpMultiplier => (carried != null && carried.Type != null) ? carried.Type.JumpMultiplier : 1f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,7 +33,6 @@ public class PlayerCarry : MonoBehaviour
         carried = crystal;
         crystal.PickUp(carryPoint);
 
-        // 6. Hafta 5. Kişi Görevi: Ağır kristal kütleyi artırır, zıplama yüksekliğini düşürür
         rb.mass = baseMass + crystal.Weight();
 
         Debug.Log($"Collected Crystal! Puan: {crystal.Points()}, Ağırlık: {crystal.Weight()}, Kütle: {rb.mass}");
@@ -43,13 +45,23 @@ public class PlayerCarry : MonoBehaviour
         carried.Drop();
         carried = null;
 
-        // Kristal bırakılınca kütle eski haline döner
         rb.mass = baseMass;
 
         Debug.Log("Knocked the cargo off!");
     }
 
-    // Hem DeliveryZone hem Checkpoint HandOver() çağırdığı için burası çalışır:
+    public void ResetCarriedToSpawn()
+    {
+        if (!IsCarrying()) return;
+
+        carried.ResetToSpawn();
+        carried = null;
+
+        rb.mass = baseMass;
+
+        Debug.Log("Carried crystal reset to its spawn point on death/respawn.");
+    }
+
     public Crystal HandOver()
     {
         if (!IsCarrying()) return null;
@@ -57,13 +69,11 @@ public class PlayerCarry : MonoBehaviour
         Crystal crystal = carried;
         carried = null;
 
-        // Kristal teslim edilince kütle eski haline döner
         rb.mass = baseMass;
 
         return crystal;
     }
 
-    // Küçük harfle çağıran olası durumlar için yönlendirme
     public Crystal Handover()
     {
         return HandOver();

@@ -5,60 +5,84 @@ public class Crystal : MonoBehaviour
     private Rigidbody rb;
     private Collider box;
     private Collider range;
+
     [SerializeField] private CargoType type;
+    public CargoType Type => type;
+
+    [SerializeField] private int pointValue = 1;
+
+    private float canPickUpAt;
+
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+    private Transform initialParent;
+
     public float Weight()
     {
         return type != null ? type.Weight() : 0f;
     }
-    [SerializeField] private int pointValue = 1; // Kristalin puan değeri
-    private float canPickUpAt; // Yeniden toplanma gecikmesi için zaman tutucu
 
     void Awake()
     {
-        // Kendi bileşenlerimizi başlangıçta cache'liyoruz (hafızada tutuyoruz)
         rb = GetComponent<Rigidbody>();
         box = GetComponent<BoxCollider>();
         range = GetComponent<SphereCollider>();
+
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+        initialParent = transform.parent;
     }
 
-    // "Şu an toplanabilir miyim?" sorusunun yanıtı
     public bool CanBePickedUp()
     {
         return Time.time >= canPickUpAt;
     }
 
-    // DeliveryZone'un kristalin puanını okuyabilmesi için gerekli metod:
     public int Points()
     {
         return pointValue;
     }
-    
-    // Alındığında çalışacak metod (Kinematik ve çarpışmalar kapanır, oyuncuya bağlanır)
+
     public void PickUp(Transform carryPoint)
     {
-        rb.isKinematic = true;          // Fizik motoru dondurulur, yerçekimi etkilemez
-        box.enabled = false;            // Katı çarpışma kapatılır (oyuncuyu ittirmez)
-        range.enabled = false;          // Toplama alanı kapatılır (tekrar üst üste tetiklenmez)
+        rb.isKinematic = true;
+        box.enabled = false;
+        range.enabled = false;
 
-        // Oyuncunun başındaki CarryPoint'in çocuğu olur
         transform.SetParent(carryPoint);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
     }
 
-    // Yere bırakıldığında çalışacak metod
     public void Drop()
     {
-        transform.SetParent(null);      // Ebeveyn-çocuk bağı koparılır
-        box.enabled = true;             // Çarpışmalar tekrar açılır
-        range.enabled = true;           // Toplama menzili aktifleşir
-        rb.isKinematic = false;         // Fizik motoru ve yerçekimi geri verilir
+        transform.SetParent(null);
+        box.enabled = true;
+        range.enabled = true;
+        rb.isKinematic = false;
 
-        // Oyuncunun önüne doğru hafifçe yukarı ve ileri fırlatılır
         Vector3 push = transform.forward + Vector3.up;
-        rb.AddForce(push * 3f, ForceMode.Impulse); // push3f hatası düzeltilip doğru çarpma yapıldı
+        rb.AddForce(push * 3f, ForceMode.Impulse);
 
-        // Oyuncu bırakır bırakmaz anında tekrar eline almasın diye 0.5 saniye kısıtlama konur
         canPickUpAt = Time.time + 0.5f;
+    }
+
+    public void ResetToSpawn()
+    {
+        transform.SetParent(initialParent);
+        transform.position = initialPosition;
+        transform.rotation = initialRotation;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+        }
+
+        if (box != null) box.enabled = true;
+        if (range != null) range.enabled = true;
+
+        canPickUpAt = Time.time;
     }
 }

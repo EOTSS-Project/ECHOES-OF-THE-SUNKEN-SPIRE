@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerRespawn : MonoBehaviour
 {
-    [SerializeField] private float safeTimeAfterRespawn = 1f; // seconds in which nothing can kill us again
+    [SerializeField] private float safeTimeAfterRespawn = 1f;
 
     private Rigidbody rb;
     private float halfHeight;
@@ -20,13 +20,12 @@ public class PlayerRespawn : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         CapsuleCollider capsule = GetComponent<CapsuleCollider>();
         halfHeight = capsule != null ? capsule.height * 0.5f * transform.lossyScale.y : 1f;
-        checkpointFeet = transform.position - Vector3.up * halfHeight; // the spawn is the first checkpoint
+        checkpointFeet = transform.position - Vector3.up * halfHeight;
     }
 
     void OnEnable() { GameEvents.Won += OnWon; }
     void OnDisable() { GameEvents.Won -= OnWon; }
 
-    // Only a higher checkpoint replaces the current one
     public void SetCheckpoint(Vector3 feet)
     {
         if (feet.y <= checkpointFeet.y + 0.5f) return;
@@ -37,6 +36,12 @@ public class PlayerRespawn : MonoBehaviour
     public void Die(string reason)
     {
         if (won || Time.time < safeUntil) return;
+
+        PlayerCarry carry = GetComponent<PlayerCarry>();
+        if (carry != null)
+        {
+            carry.ResetCarriedToSpawn();
+        }
 
         GameEvents.RaisePlayerDied(reason);
 
@@ -50,7 +55,6 @@ public class PlayerRespawn : MonoBehaviour
         GameEvents.RaisePlayerRespawned(checkpointFeet);
     }
 
-    // The climb is over: hold the player where they are, even mid-jump at the summit edge
     void OnWon()
     {
         won = true;

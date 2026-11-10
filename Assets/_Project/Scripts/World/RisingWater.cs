@@ -7,19 +7,19 @@ using UnityEngine;
 public class RisingWater : MonoBehaviour
 {
     [Header("Rising")]
-    [SerializeField] private float riseSpeed = 0.2f;              // metres per second
-    [SerializeField] private float catchUpSpeed = 1f;             // when the player is far above
+    [SerializeField] private float riseSpeed = 0.2f; // metres per second
+    [SerializeField] private float catchUpSpeed = 1f; // when the player is far above
     [SerializeField] private float maxDistanceBelowPlayer = 10f;
 
     [Header("Start and Respawn")]
-    [SerializeField] private float startDelay = 6f;               // starts after this many seconds...
-    [SerializeField] private float startWhenPlayerAbove = 3.5f;   // ...or once the player's feet pass this height (the first ledges)
+    [SerializeField] private float startDelay = 6f; // starts after this many seconds...
+    [SerializeField] private float startWhenPlayerAbove = 3.5f; // ...or once the player's feet pass this height (the first ledges)
     [SerializeField] private float pauseAfterRespawn = 3f;
     [SerializeField] private float resetBelowCheckpoint = 6f;
 
     [Header("Final Rush")]
-    [SerializeField] private float finalRushHeight = 30f;         // once the player's feet pass this height...
-    [SerializeField] private float finalRushSpeed = 0.45f;        // ...the water rises this fast
+    [SerializeField] private float finalRushHeight = 30f; // once the player's feet pass this height...
+    [SerializeField] private float finalRushSpeed = 0.45f; // ...the water rises this fast
 
     [SerializeField] private PlayerRespawn player;
 

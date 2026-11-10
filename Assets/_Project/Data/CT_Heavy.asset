@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df3cb67d001a24b1dbeae1bb3111bbe2, type: 3}
   m_Name: CT_Heavy
   m_EditorClassIdentifier: Assembly-CSharp::CargoType
-  points: 3
-  weight: 1
+  typeName: 
+  weight: 5
+  speedMultiplier: 0.5
+  jumpMultiplier: 0.5
