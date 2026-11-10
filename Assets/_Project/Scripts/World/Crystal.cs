@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class Crystal: MonoBehaviour
+public class Crystal : MonoBehaviour
 {
     private Rigidbody rb;
     private Collider box;
     private Collider range;
 
+    [SerializeField] private int pointValue = 1; // Kristalin puan değeri
     private float canPickUpAt; // Yeniden toplanma gecikmesi için zaman tutucu
 
     void Awake()
@@ -20,6 +21,12 @@ public class Crystal: MonoBehaviour
     public bool CanBePickedUp()
     {
         return Time.time >= canPickUpAt;
+    }
+
+    // DeliveryZone'un kristalin puanını okuyabilmesi için gerekli metod:
+    public int Points()
+    {
+        return pointValue;
     }
 
     // Alındığında çalışacak metod (Kinematik ve çarpışmalar kapanır, oyuncuya bağlanır)
@@ -45,7 +52,7 @@ public class Crystal: MonoBehaviour
 
         // Oyuncunun önüne doğru hafifçe yukarı ve ileri fırlatılır
         Vector3 push = transform.forward + Vector3.up;
-        rb.AddForce(push * 3f, ForceMode.Impulse);
+        rb.AddForce(push * 3f, ForceMode.Impulse); // push3f hatası düzeltilip doğru çarpma yapıldı
 
         // Oyuncu bırakır bırakmaz anında tekrar eline almasın diye 0.5 saniye kısıtlama konur
         canPickUpAt = Time.time + 0.5f;

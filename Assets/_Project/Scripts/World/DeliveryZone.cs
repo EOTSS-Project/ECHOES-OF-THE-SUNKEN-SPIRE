@@ -1,24 +1,21 @@
-
 using UnityEngine;
 
 public class DeliveryZone : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
-    {
-        PlayerCarry carry = other.GetComponent<PlayerCarry>();
+    private int score; // Toplam toplanan puan
 
+    void OnTriggerEnter(Collider other)
+    {
+        // Oyuncu kristal taşıyor mu kontrol et
+        PlayerCarry carry = other.GetComponent<PlayerCarry>();
         if (carry == null) return;
 
-        // The exit is the last sanctuary: a carried crystal counts, and reaching it ends the climb
-        Crystal crystal = carry.HandOver();
-        if (crystal != null)
-        {
-            Destroy(crystal.gameObject);
-            Debug.Log("Delivered!");
-            GameEvents.RaiseCrystalDeposited();
-        }
+        if (!carry.IsCarrying()) return;
 
-        GameEvents.RaiseWon();
+        // Kristali teslim al, puanı ekle ve kristali yok et
+        Crystal crystal = carry.HandOver();
+        score += crystal.Points();
+        Debug.Log("Delivered! +" + crystal.Points() + " Score: " + score);
+        Destroy(crystal.gameObject);
     }
 }
-
