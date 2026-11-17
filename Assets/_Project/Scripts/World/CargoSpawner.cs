@@ -10,17 +10,10 @@ public class CargoSpawner : MonoBehaviour
 
     void Update()
     {
+        // Mevcut kargo hala sahnede varsa (yok edilmediyse) bekle, yenisini üretme
         if (currentCargo != null)
         {
-            float distance = Vector3.Distance(transform.position, currentCargo.transform.position);
-            if (distance > 1.5f)
-            {
-                currentCargo = null; 
-            }
-            else
-            {
-                return; 
-            }
+            return;
         }
 
         timer -= Time.deltaTime;

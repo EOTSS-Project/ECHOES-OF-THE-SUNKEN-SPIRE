@@ -6,6 +6,8 @@ public class PlayerCarry : MonoBehaviour
     public Transform CarryPoint => carryPoint;
 
     private Crystal carried;
+    public Crystal CarriedCrystal => carried; // GameHUD'un kargo rengini bilmesi için eklendi
+
     private Rigidbody rb;
     private float baseMass;
 
@@ -34,8 +36,6 @@ public class PlayerCarry : MonoBehaviour
         crystal.PickUp(carryPoint);
 
         rb.mass = baseMass + crystal.Weight();
-
-        Debug.Log($"Collected Crystal! Puan: {crystal.Points()}, Ağırlık: {crystal.Weight()}, Kütle: {rb.mass}");
     }
 
     public void DropCargo()
@@ -44,10 +44,7 @@ public class PlayerCarry : MonoBehaviour
 
         carried.Drop();
         carried = null;
-
         rb.mass = baseMass;
-
-        Debug.Log("Knocked the cargo off!");
     }
 
     public void ResetCarriedToSpawn()
@@ -56,10 +53,7 @@ public class PlayerCarry : MonoBehaviour
 
         carried.ResetToSpawn();
         carried = null;
-
         rb.mass = baseMass;
-
-        Debug.Log("Carried crystal reset to its spawn point on death/respawn.");
     }
 
     public Crystal HandOver()
@@ -68,8 +62,14 @@ public class PlayerCarry : MonoBehaviour
 
         Crystal crystal = carried;
         carried = null;
-
         rb.mass = baseMass;
+
+        // Teslim edilen kargoyu türünü ve puanını GameHUD'a bildir
+        if (GameHUD.Instance != null)
+        {
+            bool isHeavy = crystal.Weight() > 1f || (crystal.Type != null && crystal.Type.name.ToLower().Contains("heavy"));
+            GameHUD.Instance.RegisterDeposit(isHeavy, crystal.Points());
+        }
 
         return crystal;
     }

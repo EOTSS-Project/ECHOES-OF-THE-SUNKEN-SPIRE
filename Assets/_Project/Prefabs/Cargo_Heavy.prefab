@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crystal
   type: {fileID: 11400000, guid: a4379692688484a559afc6ede5ac79a9, type: 2}
-  pointValue: 3
+  pointValue: 2
