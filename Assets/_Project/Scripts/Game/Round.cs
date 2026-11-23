@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using TMPro;
 
@@ -9,27 +8,50 @@ public class Round : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timeText;
 
-    private int score;
-    private float timeLeft;
+    // the end screen
+    [SerializeField] private GameOver gameOver;
+
+    private int score;      // points this round
+    private float timeLeft; // seconds until the end
+    private bool over;      // true once the round has ended
+
+    public bool IsOver => over;
 
     void Start()
     {
-        timeLeft = roundLength;
+        timeLeft = roundLength; // a full clock
         ShowHud();
     }
 
     void Update()
     {
+        if (over) return; // ended: nothing changes any more
+
+        // count down, but never below zero
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0f) timeLeft = 0f;
         ShowHud();
+
+        if (timeLeft <= 0f) EndRound("Süre doldu! Kule sulara gömüldü...");
     }
 
+    // a sanctuary deposit calls this (through GameHUD)
     public void AddPoints(int points)
     {
+        if (over) return;
         score += points;
     }
 
+    // time's up, the summit or the last death ends the round
+    public void EndRound(string message)
+    {
+        if (over) return;
+        over = true;
+        Time.timeScale = 0f; // stop the world
+        gameOver.Show(message, score);
+    }
+
+    // write both numbers on the screen
     void ShowHud()
     {
         scoreText.text = "Puan " + score;

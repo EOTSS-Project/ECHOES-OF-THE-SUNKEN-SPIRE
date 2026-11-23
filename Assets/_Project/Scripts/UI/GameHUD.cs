@@ -8,6 +8,7 @@ public class GameHUD : MonoBehaviour
     [SerializeField] private PlayerRespawn player;
     [SerializeField] private PlayerCarry carry;
     [SerializeField] private RisingWater water;
+    [SerializeField] private Round round;
 
     private string message;
     private float messageUntil;
@@ -137,6 +138,7 @@ public class GameHUD : MonoBehaviour
             savedHeavy++;
             int added = points > 0 ? points : 2;
             currentScore += added;
+            if (round != null) round.AddPoints(added);
             Show($"Ağır ışık kristali sığınağa bırakıldı! (+{added} Puan)", 3f);
         }
         else
@@ -156,6 +158,8 @@ public class GameHUD : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f;
+        if (round != null)
+           round.EndRound("Zirveye ulaştın! Kule ışığına kavuştu.");
     }
 
     public void TriggerLose()
@@ -166,6 +170,8 @@ public class GameHUD : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f; // Ölünce de zamanı ve hareketi durdur
+        if (round != null)
+            round.EndRound("Batık sular seni yuttu...");
     }
 
     void OnWon()
@@ -260,6 +266,9 @@ public class GameHUD : MonoBehaviour
 
             return;
         }
+        
+        // Bitiş ekranını artık GameOver paneli gösteriyor
+        if (round != null && round.IsOver) return;
 
         // 2. OYUN İÇİ HUD
         if (player != null && water != null && !won && !lost)
@@ -275,7 +284,6 @@ public class GameHUD : MonoBehaviour
             Line(new Rect(20, 75, 700, 32), $"Hafif Işık Kristalleri: {savedLight} / {totalLight}", yellowColor, infoStyle);
             Line(new Rect(20, 105, 700, 32), $"Ağır Işık Kristalleri: {savedHeavy} / {totalHeavy}", orangeColor, infoStyle);
 
-            Line(new Rect(20, 135, 700, 32), $"Toplanan Puan: {currentScore} / {MaxScore}", Color.white, infoStyle);
             Line(new Rect(20, 165, 700, 32), $"Ölüm Sayısı: {deathCount} / {MaxDeaths}", Color.red, infoStyle);
 
             if (carry != null && carry.IsCarrying() && carry.CarriedCrystal != null)
