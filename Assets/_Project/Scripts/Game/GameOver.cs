@@ -17,6 +17,10 @@ public class GameOver : MonoBehaviour
 
         resultText.text = message + "\nPuan " + score + "\nEn iyi " + best;
         gameObject.SetActive(true); // the panel appears
+
+        // unlock and show cursor so the player can click Play Again
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // the Play again button calls this
