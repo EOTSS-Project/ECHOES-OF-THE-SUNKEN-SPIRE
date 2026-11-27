@@ -146,6 +146,7 @@ public class GameHUD : MonoBehaviour
             savedLight++;
             int added = points > 0 ? points : 1;
             currentScore += added;
+            if (round != null) round.AddPoints(added);
             Show($"Hafif ışık kristali sığınağa bırakıldı! (+{added} Puan)", 3f);
         }
     }
@@ -159,7 +160,7 @@ public class GameHUD : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         if (round != null)
-           round.EndRound("Zirveye ulaştın! Kule ışığına kavuştu.");
+            round.EndRound("Zirveye ulaştın! Kule ışığına kavuştu.");
     }
 
     public void TriggerLose()
@@ -266,7 +267,7 @@ public class GameHUD : MonoBehaviour
 
             return;
         }
-        
+
         // Bitiş ekranını artık GameOver paneli gösteriyor
         if (round != null && round.IsOver) return;
 
@@ -284,13 +285,13 @@ public class GameHUD : MonoBehaviour
             Line(new Rect(20, 75, 700, 32), $"Hafif Işık Kristalleri: {savedLight} / {totalLight}", yellowColor, infoStyle);
             Line(new Rect(20, 105, 700, 32), $"Ağır Işık Kristalleri: {savedHeavy} / {totalHeavy}", orangeColor, infoStyle);
 
-            Line(new Rect(20, 165, 700, 32), $"Ölüm Sayısı: {deathCount} / {MaxDeaths}", Color.red, infoStyle);
+            Line(new Rect(20, 135, 700, 32), $"Ölüm Sayısı: {deathCount} / {MaxDeaths}", Color.red, infoStyle);
 
             if (carry != null && carry.IsCarrying() && carry.CarriedCrystal != null)
             {
                 bool isHeavy = carry.CarriedCrystal.Weight() > 1f || (carry.CarriedCrystal.Type != null && carry.CarriedCrystal.Type.name.ToLower().Contains("heavy"));
                 Color carryColor = isHeavy ? orangeColor : yellowColor;
-                Line(new Rect(20, 195, 700, 32), "Elinde bir kristal parlıyor", carryColor, infoStyle);
+                Line(new Rect(20, 165, 700, 32), "Elinde bir kristal parlıyor", carryColor, infoStyle);
             }
 
             // --- ORTA ALT SU YÜKSELME GERİ SAYIMI ---

@@ -4,7 +4,7 @@ using TMPro;
 public class Round : MonoBehaviour
 {
     // how long a round lasts, and the two HUD texts
-    [SerializeField] private float roundLength = 300f;
+    [SerializeField] private float roundLength = 120f;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timeText;
 
